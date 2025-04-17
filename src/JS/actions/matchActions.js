@@ -52,4 +52,4 @@ export const filterLeagueMatches = (leagueName) => async (dispatch) => {
 };
  export const clearMatches = () => ({
   type: CLEAR_MATCHES,
-});
+}); 

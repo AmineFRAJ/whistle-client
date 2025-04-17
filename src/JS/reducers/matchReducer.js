@@ -16,45 +16,26 @@ const initialState = {
   matches: [],
   finishedMatches: [],
   error: null,
-  loaded: false,
-  loadedFinished: false,
 };
 
 export const matchReducer = (state = initialState, action) => {
   switch (action.type) {
     case CLEAR_MATCHES:
-      return {
-        ...state,
-        matches: [],
-        finishedMatches: [],
-        loaded: false,
-        loadedFinished: false,
-      };
+      return { ...state, matches: [], finishedMatches: [] }; // ✅ reset data
 
     case FETCH_MATCHES_REQUEST:
     case FETCH_FINISHED_MATCHES_REQUEST:
       return { ...state, loading: true };
 
     case FETCH_MATCHES_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        loaded: true,
-        matches: action.payload,
-      };
+      return { ...state, loading: false,loaded: true, matches: action.payload };
 
     case FETCH_FINISHED_MATCHES_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        loadedFinished: true,
-        finishedMatches: action.payload,
-      };
+      return { ...state, loading: false, finishedMatches: action.payload };
 
     case FETCH_MATCHES_FAIL:
     case FETCH_FINISHED_MATCHES_FAIL:
       return { ...state, loading: false, error: action.payload };
-
     case FILTER_MATCHES_REQUEST:
       return { ...state, loading: true };
 
@@ -63,10 +44,8 @@ export const matchReducer = (state = initialState, action) => {
 
     case FILTER_MATCHES_FAIL:
       return { ...state, loading: false, error: action.payload };
-
     default:
       return state;
   }
 };
-
-export default matchReducer;
+export default matchReducer
