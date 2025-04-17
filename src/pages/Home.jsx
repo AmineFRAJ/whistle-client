@@ -38,7 +38,7 @@ const Home = () => {
       ) : (
         <>
           {matches.length === 0 && finishedMatches.length === 0 && (
-            <p className="text-red-400 mb-2">⚠️ No matches found for today</p>
+            <p className="text-red-500 mb-2">⚠️ No matches found for today</p>
           )}
           <Status matchesList={matches} matchesListFinished={finishedMatches} />
         </>
