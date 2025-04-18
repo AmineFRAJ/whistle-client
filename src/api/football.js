@@ -1,15 +1,11 @@
 // src/api/football.js
 
-const API_TOKEN = process.env.REACT_APP_API_TOKEN;
+ 
 const NEWS_TOKEN = process.env.REACT_APP_API_TOKEN_NEWS;
 
-const headers = {
-  "X-Auth-Token": API_TOKEN,
-  "Content-Type": "application/json",
-};
-
  
-// 3. Get soccer news
+ 
+// soccer news
 export const getNewsInfo = async () => {
   try {
     const res = await fetch(

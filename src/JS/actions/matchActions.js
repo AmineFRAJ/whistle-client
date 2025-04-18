@@ -15,7 +15,10 @@ import {
 export const getMatches = () => async (dispatch) => {
   dispatch({ type: FETCH_MATCHES_REQUEST });
   try {
-    const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/matches`);
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_API_URL}/api/matches`
+    );
+
     dispatch({ type: FETCH_MATCHES_SUCCESS, payload: data.matches });
   } catch (error) {
     dispatch({
@@ -28,7 +31,9 @@ export const getMatches = () => async (dispatch) => {
 export const getFinishedMatches = () => async (dispatch) => {
   dispatch({ type: FETCH_FINISHED_MATCHES_REQUEST });
   try {
-    const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/matches/finished`);
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_API_URL}/api/matches/finished`
+    );
     dispatch({ type: FETCH_FINISHED_MATCHES_SUCCESS, payload: data.matches });
   } catch (error) {
     dispatch({
@@ -41,15 +46,20 @@ export const filterLeagueMatches = (leagueName) => async (dispatch) => {
   dispatch({ type: FILTER_MATCHES_REQUEST });
 
   try {
-    const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/matches/league/${leagueName}`);
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_API_URL}/api/matches/league/${leagueName}`
+    );
     dispatch({ type: FILTER_MATCHES_SUCCESS, payload: data.matches });
   } catch (error) {
     dispatch({
       type: FILTER_MATCHES_FAIL,
-      payload: error.response?.data?.error || error.message || "Failed to filter league matches",
+      payload:
+        error.response?.data?.error ||
+        error.message ||
+        "Failed to filter league matches",
     });
   }
 };
- export const clearMatches = () => ({
+export const clearMatches = () => ({
   type: CLEAR_MATCHES,
-}); 
+});
